@@ -123,14 +123,14 @@ export class ApiService {
           response => {
             let results: IResponse.IFlightSearchResults = response.json();
             console.log(results);
+            if (results.diagnostic.status != 200) {
+              reject(new Error(results.diagnostic.error_msgs));
+            }
             if (data.roundtrip && (results.returns === undefined || results.returns.result.length === 0)) {
               reject(new Error('Returns flight empty'));
             }
             if (results.departures === undefined || results.departures.result.length === 0) {
               reject(new Error('Departures flight empty'));
-            }
-            if (results.diagnostic.status != 200) {
-              reject(new Error(results.diagnostic.error_msgs));
             }
             resolve(results);
           },
@@ -159,11 +159,11 @@ export class ApiService {
       this.http.post(this.API_URL + "v1/add_flight_order", { flight_order: data }, { headers: this.headers })
         .subscribe(
         response => {
-          let result: IResponse.ITokenReqResult = response.json();
-          if(result.diagnostic.status != 200){
-            reject(result);
+          let results: IResponse.ITokenReqResult = response.json();
+          if (results.diagnostic.status != 200) {
+            reject(new Error(results.diagnostic.error_msgs));
           }
-          resolve(result);
+          resolve(results);
         },
         err => reject(err)
         );

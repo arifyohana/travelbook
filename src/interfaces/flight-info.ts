@@ -15,7 +15,7 @@ export interface IFlightInfo {
   string_arrival_date: string;
   string_arrival_date_short: string;
   simple_arrival_time: Date;
-  img_sr: string;
+  img_src: string;
   duration_time: number;
   duration_hour: string;
   duration_minute: string;

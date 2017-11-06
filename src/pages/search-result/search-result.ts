@@ -19,11 +19,11 @@ export class SearchResultPage extends SearchResultPageValidator {
   searchResult: IResponse.IFlightSearchResults;
   data: { subtitle: string, list: IFlight[], date: string };
   dataQuery: IRequest.ISearchFlightDataQuery;
-  loading:Loading;
+  loading: Loading;
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public loadingCtrl:LoadingController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController,
     private api: ApiService,
     public alertCtrl: AlertController,
   ) {
@@ -86,7 +86,7 @@ export class SearchResultPage extends SearchResultPageValidator {
           console.log(result);
           this.loading.dismiss();
           //go_det dan ret_det di pake sementara, karena di output getflight data gak ada info dep/arr city
-          this.navCtrl.push(IsiDataPage, { data: result, color: this.color, go_det: this.searchResult.go_det, ret_det:this.searchResult.ret_det });
+          this.navCtrl.push(IsiDataPage, { data: result, color: this.color, go_det: this.searchResult.go_det, ret_det: this.searchResult.ret_det });
         })
         .catch(err => console.log(err.message));
     }

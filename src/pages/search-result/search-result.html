@@ -45,13 +45,14 @@
   </ion-row>
   <ion-list>
     <ion-item *ngFor="let item of data.list" (click)="next(item)" >
+      <div class="round-point" item-start></div>
       <ion-thumbnail item-start>
         <img [src]="item.image">
       </ion-thumbnail>
       <h2>{{item.airlines_name}}</h2>
       <p>{{item.simple_departure_time}} - {{item.simple_arrival_time}}</p>
       <p>{{item.duration}}, {{item.stop}}</p>
-      <h2 class="price" item-end>{{item.price_value | currency:searchResult.diagnostic.currency:true}}</h2>
+      <h2 class="price" item-end>{{item.price_value | currency:searchResult.diagnostic.currency}}</h2>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -18,7 +18,7 @@
     <ion-item *ngIf="isSelect(item)">
       <ion-label>{{item.FieldText}}</ion-label>
       <ion-select [(ngModel)]="item.value">
-        <ion-option *ngFor="let subitem of item.resource" [value]="subitem.id">{{subitem.name}}</ion-option>
+        <ion-option *ngFor="let subitem of item.resource" [value]="subitem.id || subitem.area_code">{{subitem.name || subitem.text}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>

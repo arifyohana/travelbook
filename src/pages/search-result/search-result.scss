@@ -69,6 +69,21 @@ page-search-result {
       margin: 1rem;
     }
   }
+  ion-label{
+    overflow: visible;
+    text-overflow: normal;
+    white-space: normal;
+  }
+  ion-item.item.item-block{
+    padding-left: 8px;
+  }
+  .round-point{
+    background: #f4f4f4;
+    height: 15px;
+    width: 15px;
+    border-radius: 8px;
+    margin-right: 8px;
+  }
   button{
     &.button-small{
       font-size: 1.2rem;

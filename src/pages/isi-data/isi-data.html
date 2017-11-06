@@ -10,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+  <!-- Departure -->
   <ion-grid padding>
     <ion-row justify-content-center>
       <h5 class="navbar">
@@ -21,25 +22,26 @@
       <h6>Keberangkatan</h6>
     </ion-row>
     <ion-row>
-      <ion-grid *ngFor="let item of data.departures.flight_infos.flight_info">
+      <ion-grid class="flight-detail" *ngFor="let item of data.departures.flight_infos.flight_info">
         <ion-row>
           <ion-col col-1>
             <div class="plane-icon icon depart" [ngClass]="color" [inlineSVG]="'assets/svg/plane.svg'"></div>
           </ion-col>
           <ion-col col-4>
-            <div>FROM:</div>
+            <div class="header">FROM:</div>
             <div>{{item.departure_city_name}} ({{item.departure_city}})</div>
           </ion-col>
           <ion-col col-2>
-            <div>FLIGHT</div>
+            <div class="header">FLIGHT</div>
             <div>{{item.flight_number}}</div>
+            <div><img src="{{item.img_src}}" alt="{{item.img_src}}"></div>
           </ion-col>
           <ion-col col-3>
-            <div>DATE</div>
+            <div class="header">DATE</div>
             <div>{{item.string_departure_date}}</div>
           </ion-col>
           <ion-col col-2>
-            <div>TIME</div>
+            <div class="header">TIME</div>
             <div>{{item.simple_departure_time}}</div>
           </ion-col>
         </ion-row>
@@ -48,19 +50,19 @@
             <div class="plane-icon icon" [ngClass]="color" [inlineSVG]="'assets/svg/plane.svg'"></div>
           </ion-col>
           <ion-col col-4>
-            <div>TO:</div>
+            <div class="header">TO:</div>
             <div>{{item.arrival_city_name}} ({{item.arrival_city}})</div>
           </ion-col>
           <ion-col col-2>
-            <div>FLIGHT</div>
+            <div class="header">FLIGHT</div>
             <div>{{item.flight_number}}</div>
           </ion-col>
           <ion-col col-3>
-            <div>DATE</div>
+            <div class="header">DATE</div>
             <div>{{item.string_arrival_date}}</div>
           </ion-col>
           <ion-col col-2>
-            <div>TIME</div>
+            <div class="header">TIME</div>
             <div>{{item.simple_arrival_time}}</div>
           </ion-col>
         </ion-row>
@@ -68,23 +70,86 @@
     </ion-row>
     <hr>
     <ion-row>
-      <div class="price">{{data.departures.price_value}}</div>
+      <div class="price">{{data.departures.price_value | currency:data.diagnostic.currency}}</div>
     </ion-row>
-
   </ion-grid>
+  <!-- End Departure -->
+  <!-- Return -->
+  <ion-grid padding *ngIf="data.returns">
+    <ion-row justify-content-center>
+      <h5 class="navbar">
+        {{retDet.dep_airport.province_name}}/{{retDet.dep_airport.city_name}} - {{retDet.arr_airport.province_name}}/{{retDet.arr_airport.city_name}}
+      </h5>
+    </ion-row>
+    <hr>
+    <ion-row>
+      <h6>Kedatangan</h6>
+    </ion-row>
+    <ion-row>
+      <ion-grid class="flight-detail" *ngFor="let item of data.returns.flight_infos.flight_info">
+        <ion-row>
+          <ion-col col-1>
+            <div class="plane-icon icon depart" [ngClass]="color" [inlineSVG]="'assets/svg/plane.svg'"></div>
+          </ion-col>
+          <ion-col col-4>
+            <div class="header">FROM:</div>
+            <div>{{item.departure_city_name}} ({{item.departure_city}})</div>
+          </ion-col>
+          <ion-col col-2>
+            <div class="header">FLIGHT</div>
+            <div>{{item.flight_number}}</div>
+          </ion-col>
+          <ion-col col-3>
+            <div class="header">DATE</div>
+            <div>{{item.string_departure_date}}</div>
+          </ion-col>
+          <ion-col col-2>
+            <div class="header">TIME</div>
+            <div>{{item.simple_departure_time}}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-1>
+            <div class="plane-icon icon" [ngClass]="color" [inlineSVG]="'assets/svg/plane.svg'"></div>
+          </ion-col>
+          <ion-col col-4>
+            <div class="header">TO:</div>
+            <div>{{item.arrival_city_name}} ({{item.arrival_city}})</div>
+          </ion-col>
+          <ion-col col-2>
+            <div class="header">FLIGHT</div>
+            <div>{{item.flight_number}}</div>
+          </ion-col>
+          <ion-col col-3>
+            <div class="header">DATE</div>
+            <div>{{item.string_arrival_date}}</div>
+          </ion-col>
+          <ion-col col-2>
+            <div class="header">TIME</div>
+            <div>{{item.simple_arrival_time}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-row>
+    <hr>
+    <ion-row>
+      <div class="price">{{data.returns.price_value | currency:data.diagnostic.currency}}</div>
+    </ion-row>
+  </ion-grid>
+  <!-- End Return -->
   <ion-grid>
-    <ion-row class="grey" margin-top padding-left>
+    <ion-row class="grey" margin-top padding-horizontal>
       <ion-col>
         <h5>Refund tergantung pada kebijakan maskapai</h5>
       </ion-col>
     </ion-row>
 
-    <ion-row [ngClass]="color" margin-top padding-left>
+    <ion-row [ngClass]="color" margin-top padding-horizontal>
       <ion-col>
         <h5>Data Pemesan</h5>
       </ion-col>
     </ion-row>
-    <ion-row class="sub" [ngClass]="color" padding-left>
+    <ion-row class="sub" [ngClass]="color" padding-horizontal>
       <ion-col col-11>
         <h6>Masuk atau Daftar</h6>
       </ion-col>
@@ -93,7 +158,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row [ngClass]="color" margin-top padding-left (click)="fillContactData()">
+    <ion-row [ngClass]="color" margin-top padding-horizontal (click)="fillContactData()">
       <ion-col col-11>
         <h5>Isi Data Pemesan</h5>
       </ion-col>
@@ -101,19 +166,19 @@
         <ion-icon name="ios-arrow-forward"></ion-icon>
       </ion-col>
     </ion-row>
-    <ion-row class="sub" [ngClass]="color" padding-left>
+    <ion-row class="sub" [ngClass]="color" padding-horizontal>
       <ion-col>
         <h6>
           <ion-icon name="ios-add-circle-outline"></ion-icon>&nbsp;Tambahkan ke daftar penumpang</h6>
       </ion-col>
     </ion-row>
 
-    <ion-row [ngClass]="color" margin-top padding-left>
+    <ion-row [ngClass]="color" margin-top padding-horizontal>
       <ion-col>
         <h5>Data penumpang</h5>
       </ion-col>
     </ion-row>
-    <ion-row class="sub" [ngClass]="color" padding-left *ngFor="let item of countAdultToItem()" (click)="fillAdultPassengerData(item)">
+    <ion-row class="sub" [ngClass]="color" padding-horizontal *ngFor="let item of countAdultToItem()" (click)="fillAdultPassengerData(item)">
       <ion-col col-11>
         <h6>Penumpang Dewasa {{item}}</h6>
       </ion-col>
@@ -128,43 +193,68 @@
       </button>
     </ion-row>
 
-    <ion-row>
+    <ion-row padding-horizontal>
       <ion-col>
         <h5>Fasilitas Penerbangan</h5>
       </ion-col>
     </ion-row>
-    <ion-row class="detail header">
+    <ion-row padding-horizontal class="detail header">
       <ion-col>
         <h5>Bagasi</h5>
       </ion-col>
     </ion-row>
-    <ion-row class="detail">
-      <ion-col>
-        <img [src]="data.departures.image" alt="" style="height:2.2rem;">&nbsp;
-        <h5>{{goDet.dep_airport.airport_code}} - {{goDet.arr_airport.airport_code}}</h5>
+
+    <ion-row padding-horizontal class="detail" *ngFor="let item of countAdultToItem()">
+      <!-- Detail Departure -->
+      <ion-col col-6 padding-horizontal>
+        <img [src]="data.departures.image" alt="">
+        <h5 text-center>{{goDet.dep_airport.airport_code}} - {{goDet.arr_airport.airport_code}}</h5>
+        <h6 text-center>{{displayName('a',item)}}</h6>
+        <h6 text-center>{{displayBaggage('d','a', 1, item)}}{{data.departures.check_in_baggage_unit}}</h6>
+      </ion-col>
+      <!-- Detail Return -->
+      <ion-col col-6 *ngIf="data.returns">
+        <img [src]="data.returns.image" alt="">
+        <h5 text-center>{{retDet.dep_airport.airport_code}} - {{retDet.arr_airport.airport_code}}</h5>
+        <h6 text-center>{{displayName('a',item)}}</h6>
+        <h6 text-center>{{displayBaggage('r','a', 1, item)}}{{data.returns.check_in_baggage_unit}}</h6>
       </ion-col>
     </ion-row>
-    <ion-row class="detail" *ngFor="let item of countAdultToItem()">
-      <ion-col col-11>{{displayAdultName(item)}}</ion-col>
-      <ion-col col-1>{{data.departures.check_in_baggage}}{{data.departures.check_in_baggage_unit}}</ion-col>
-    </ion-row>
-
-    <ion-row>
+    <ion-row padding-horizontal>
       <ion-col>
         <h5>Rincian Harga</h5>
       </ion-col>
     </ion-row>
-    <ion-row class="detail header">
-      <ion-col col-9>
+    <ion-row class="detail" padding-horizontal>
+      <ion-col col-8>{{data.departures.airlines_name}} (Dewasa) ({{data.departures.count_adult}})</ion-col>
+      <ion-col col-4>{{countFlightPrice('a') | currency:data.diagnostic.currency}}</ion-col>
+    </ion-row>
+    <ion-row class="detail" *ngIf="data.returns" padding-horizontal>
+      <ion-col col-8>{{data.returns.airlines_name}} (Dewasa) ({{data.returns.count_adult}})</ion-col>
+      <ion-col col-4>{{countFlightPrice('a','r') | currency:data.diagnostic.currency}}</ion-col>
+    </ion-row>
+
+    <ion-row class="detail" padding-horizontal>
+      <ion-col col-8>Bagasi {{goDet.dep_airport.airport_code}} - {{goDet.arr_airport.airport_code}}</ion-col>
+      <ion-col col-4>0</ion-col>
+    </ion-row>
+    <ion-row class="detail" *ngIf="data.returns" padding-horizontal>
+      <ion-col col-8>Bagasi {{retDet.dep_airport.airport_code}} - {{retDet.arr_airport.airport_code}}</ion-col>
+      <ion-col col-4>0</ion-col>
+    </ion-row>
+
+    <ion-row class="detail header" padding-horizontal>
+      <ion-col col-8>
         <h5>Harga Total</h5>
       </ion-col>
-      <ion-col col-3>
-        <h5>{{data.departures.price_value}}</h5>
+      <ion-col col-4>
+        <h5>{{countTotalPrice() | currency:data.diagnostic.currency}}</h5>
       </ion-col>
     </ion-row>
-    <ion-row class="detail">
-      <ion-col col-9>{{data.departures.airlines_name}} (Dewasa) ({{data.departures.count_adult}})</ion-col>
-      <ion-col col-3>{{countAdultPriceTotal()}}</ion-col>
+
+
+    <ion-row margin-vertical justify-content-center>
+      <button ion-button small round mode="ios" color="secondary" (click)="addFlightOrder()">Lanjutkan</button>
     </ion-row>
   </ion-grid>
 </ion-content>

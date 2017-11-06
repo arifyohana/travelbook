@@ -113,8 +113,22 @@ page-isi-data {
     }
   }
 
+  .flight-detail{
+    font-size: smaller;
+    .header{
+      font-weight: 600;
+      font-size: x-small;
+    }
+  }
+
   .detail{
     background-color: #f3f3f3;
+    img{
+      height: 5rem;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
     &.header{
       background-color: #e4e4e4;
     }
