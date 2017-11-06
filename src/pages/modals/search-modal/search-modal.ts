@@ -53,11 +53,8 @@ export class SearchModalPage {
       this.items = [];
       return;
     }
-    this.api.getAirports(val).subscribe(
-      data => { this.items = data; },
-      err => {
-        console.log(err);
-      }
-    );
+    this.api.getAirports(val)
+      .then(data => this.items = data)
+      .catch(err => console.log(err));
   }
 }

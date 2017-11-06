@@ -4,13 +4,17 @@ export interface IFlight {
   flight_id: string;
   airlines_name: string;
   flight_number: string;
+  flight_date: string;
   departure_city: string;
   arrival_city: string;
   stop: string;
-  price_value: number;
-  price_adult: number
-  price_child: number;
-  price_infant: number;
+  price_value: string;
+  price_adult: string
+  price_child: string;
+  price_infant: string;
+  count_adult: string;
+  count_child: string;
+  count_infant: string;
   timestamp: Date;
   has_food: boolean;
   multiplier: number;
@@ -30,7 +34,7 @@ export interface IFlight {
   best_deal: boolean;
   duration: string;
   image: string;
-  departure_flight_dat: Date;
+  departure_flight_date: Date;
   departure_flight_date_str: string;
   departure_flight_date_str_short: string;
   arrival_flight_date: Date;

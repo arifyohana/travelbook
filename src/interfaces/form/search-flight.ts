@@ -3,8 +3,8 @@ import { IAirportCode } from "../airport-code";
 export interface ISearchFlightFormData {
   from: IAirportCode;
   to: IAirportCode;
-  goDate: number;
-  retDate: number;
+  goDate: string;
+  retDate: string;
   roundtrip: boolean;
   adult: number;
   child: number;

@@ -1,12 +1,12 @@
-import { IDiagnostic, IAirport, IFlight } from "../";
+import { IDiagnostic, IFlight, IDestination } from "../";
 import { ISearchFlightQuery } from "../request";
 export interface IFlightSearchResults {
   diagnostic: IDiagnostic;
   output_type: string;
   round_trip: boolean;
   search_queries: ISearchFlightQuery;
-  go_det: { dep_airport: IAirport, arr_airport: IAirport, date: string, formatted_date: string };
-  ret_det: { dep_airport: IAirport, arr_airport: IAirport, date: string, formatted_date: string };
+  go_det: IDestination;
+  ret_det: IDestination;
   departures: { result: IFlight[] };
   returns: { result: IFlight[] };
   nearby_go_date: { nearby: { date: string, price: string }[] };
