@@ -4,13 +4,14 @@ export interface IFlight {
   flight_id: string;
   airlines_name: string;
   flight_number: string;
+  flight_date: string;
   departure_city: string;
   arrival_city: string;
   stop: string;
-  price_value: number;
-  price_adult: number
-  price_child: number;
-  price_infant: number;
+  price_value: string;
+  price_adult: string
+  price_child: string;
+  price_infant: string;
   count_adult: string;
   count_child: string;
   count_infant: string;

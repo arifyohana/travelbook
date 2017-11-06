@@ -4,7 +4,7 @@ import { Http, Headers } from '@angular/http';
 import { Platform } from 'ionic-angular';
 
 import {
-  IAirportCode, IForm, IResponse, IRequest, IPaymentOptions
+  IAirportCode, IForm, IResponse, IRequest, IPaymentOptions, ICountryCode
 } from "../../interfaces";
 /*
   API service v1
@@ -50,7 +50,7 @@ export class ApiService {
         .subscribe(
         response => {
           let results: IResponse.ITokenReqResult = response.json();
-          if (results.diagnostic.status != "200") {
+          if (results.diagnostic.status != 200) {
             reject(new Error(results.diagnostic.error_msgs));
           }
           this.token = results.token;
@@ -67,6 +67,18 @@ export class ApiService {
         response => {
           let results: IResponse.IAirportSearchResults = response.json();
           resolve(results);
+        },
+        err => reject(err));
+    });
+  }
+
+  getCountryCodes(): Promise<ICountryCode[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.API_URL + "v1/country_codes")
+        .subscribe(
+        response => {
+          let result: ICountryCode[] = response.json().resources;
+          resolve(result);
         },
         err => reject(err));
     });
@@ -117,7 +129,7 @@ export class ApiService {
             if (results.departures === undefined || results.departures.result.length === 0) {
               reject(new Error('Departures flight empty'));
             }
-            if (results.diagnostic.status != "200") {
+            if (results.diagnostic.status != 200) {
               reject(new Error(results.diagnostic.error_msgs));
             }
             resolve(results);
@@ -133,7 +145,7 @@ export class ApiService {
         .subscribe(
         response => {
           let results: IResponse.IFlightDataResult = response.json();
-          if (results.diagnostic.status != "200") {
+          if (results.diagnostic.status != 200) {
             reject(new Error(results.diagnostic.error_msgs));
           }
           resolve(results);
@@ -146,25 +158,25 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http.post(this.API_URL + "v1/add_flight_order", { flight_order: data }, { headers: this.headers })
         .subscribe(
-          response => {
-            let results: IResponse.ITokenReqResult = response.json();
-            if (results.diagnostic.status != "200") {
-              reject(new Error(results.diagnostic.error_msgs));
-            }
-            resolve(results);
-          },
-          err => reject(err)
+        response => {
+          let result: IResponse.ITokenReqResult = response.json();
+          if(result.diagnostic.status != 200){
+            reject(result);
+          }
+          resolve(result);
+        },
+        err => reject(err)
         );
     });
   }
 
-  getOrder(token: string): Promise<IResponse.IGetOrderResult> {
+  getFlightOrder(token: string): Promise<IResponse.IGetOrderResult> {
     return new Promise((resolve, reject) => {
-      this.http.get(this.API_URL + "v1/get_flight_order", { params: { token: token } })
+      this.http.post(this.API_URL + "v1/get_flight_order", { token: token }, { headers: this.headers })
         .subscribe(
         response => {
           let results: IResponse.IGetOrderResult = response.json();
-          if (results.diagnostic.status != "200") {
+          if (results.diagnostic.status != 200) {
             reject(new Error(results.diagnostic.error_msgs));
           }
           resolve(results);
@@ -179,7 +191,7 @@ export class ApiService {
         .subscribe(
           response => {
             let results: IResponse.IDeleteFlightOrderResult = response.json();
-            if (results.diagnostic.status != "200") {
+            if (results.diagnostic.status != 200) {
               reject(new Error(results.diagnostic.error_msgs));
             }
             resolve(results);
@@ -195,7 +207,7 @@ export class ApiService {
         .subscribe(
           response => {
             let results: IResponse.IPaymentFlightOrderResult = response.json();
-            if (results.diagnostic.status != "200") {
+            if (results.diagnostic.status != 200) {
               reject(new Error(results.diagnostic.error_msgs));
             }
             resolve(results);
@@ -227,7 +239,7 @@ export class ApiService {
         response => {
           let results: IResponse.IHotelSearchResults = response.json();
           console.log(results);
-          if (results.diagnostic.status != "200") {
+          if (results.diagnostic.status != 200) {
             reject(new Error(results.diagnostic.error_msgs));
           }
           resolve(results);

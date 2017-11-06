@@ -6,9 +6,9 @@ export interface IMyOrderDetail {
   airlines_name: string;
   flight_number: string;
   trip: string;
-  price_adult: number;
-  price_child: number;
-  price_infant: number;
+  price_adult: string;
+  price_child: string;
+  price_infant: string;
   flight_date: Date;
   departure_time: Date;
   arrival_time: Date;
