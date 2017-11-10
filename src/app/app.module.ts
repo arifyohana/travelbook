@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import { InlineSVGModule } from "ng-inline-svg";
 import { MyApp } from './app.component';
 
 import { CaraPemesananPageModule } from '../pages/cara-pemesanan/cara-pemesanan.module';
@@ -26,6 +26,7 @@ import { ApiService } from '../providers/api-service/api-service';
   imports: [
     BrowserModule,
     HttpModule,
+    InlineSVGModule,
 
     CaraPemesananPageModule,
     HubungiKamiPageModule,

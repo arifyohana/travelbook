@@ -1,91 +1,93 @@
 page-search-result {
-
   .domestic {
-    color: color($colors,domestic,base);
-    fill: color($colors,domestic,base);
+    color: color($colors, domestic, base);
+    fill: color($colors, domestic, base);
   }
-
   .international {
-    color: color($colors,international,base);
-    fill: color($colors,international,base);
+    color: color($colors, international, base);
+    fill: color($colors, international, base);
   }
-
   .hotel {
-    color: color($colors,hotel,base);
-    fill: color($colors,hotel,base);
+    color: color($colors, hotel, base);
+    fill: color($colors, hotel, base);
   }
-  .price{
+  .price {
     color: #f7931e;
   }
-
-  .subtitle{
+  .subtitle {
     font-size: 1.6rem;
     font-weight: 500;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
-  .date{
+  .date {
     padding-bottom: 0.5rem;
     font-weight: 500;
     font-size: 1.3rem;
   }
-  .airport-text{
+  .airport-text {
     font-size: 2rem;
     font-weight: 500;
   }
-  .plane-icon{
+  .plane-icon {
     height: 1.5rem;
     justify-content: center;
     display: flex;
     border-bottom: 1px dashed;
     margin-bottom: 1.5rem;
-    &.return{
-      svg{
+    &.return {
+      svg {
         transform: rotate(180deg);
       }
     }
-    svg{
+    svg {
       height: 2.8rem;
     }
   }
-  ion-list{
+  ion-scroll {
+    position: absolute;
+    top: 140px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    display: block;
     border: 2rem solid #f4f4f4;
     border-bottom-width: 1rem;
     border-radius: 2rem;
     margin: 1rem !important;
     background: #f4f4f4;
   }
-  ion-item{
+  ion-item {
     border-radius: 1rem;
     margin-bottom: 1rem !important;
-    .item-inner{
+    .item-inner {
       border-bottom: 0px !important;
     }
   }
-  ion-row{
-    &.button-bar{
+  ion-row {
+    &.button-bar {
       border: 0.2rem solid #f4f4f4;
       border-radius: 1rem;
       margin: 1rem;
     }
   }
-  ion-label{
+  ion-label {
     overflow: visible;
     text-overflow: normal;
     white-space: normal;
   }
-  ion-item.item.item-block{
+  ion-item.item.item-block {
     padding-left: 8px;
   }
-  .round-point{
+  .round-point {
     background: #f4f4f4;
     height: 15px;
     width: 15px;
     border-radius: 8px;
     margin-right: 8px;
   }
-  button{
-    &.button-small{
+  button {
+    &.button-small {
       font-size: 1.2rem;
       font-weight: 500;
       text-transform: capitalize;

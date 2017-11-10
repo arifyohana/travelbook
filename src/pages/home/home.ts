@@ -13,10 +13,10 @@ export class HomePage {
     flight: { icon: 'assets/svg/plane-circle.svg', banner: 'assets/img/banner-flight.png' },
     hotel: { icon: 'assets/svg/hotel-circle.svg', banner: 'assets/img/banner-hotel.png' }
   }
-  types: Array<{ name: string, text: string, icon: any }> = [
-    { name: 'domestic', text: 'Domestic Flights', icon: this.icons.flight },
-    { name: 'international', text: 'International Flights', icon: this.icons.flight },
-    { name: 'hotel', text: 'Hotels', icon: this.icons.hotel }
+  types: Array<{ name: string, text: string, icon: string, flight: boolean }> = [
+    { name: 'domestic', text: 'Domestic Flights', icon: 'assets/svg/plane-circle.svg', flight: true },
+    { name: 'international', text: 'International Flights', icon: 'assets/svg/plane-circle.svg', flight: true },
+    { name: 'hotel', text: 'Hotels', icon: 'assets/svg/hotel-circle.svg', flight: false }
   ];
   index: number;
 
