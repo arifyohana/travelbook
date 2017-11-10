@@ -12,8 +12,8 @@
 <ion-content>
   <!-- Departure -->
   <ion-grid padding>
-    <ion-row justify-content-center>
-      <h5 class="navbar">
+    <ion-row>
+      <h5 class="navbar" text-center style="width:100%;">
         {{goDet.dep_airport.province_name}}/{{goDet.dep_airport.city_name}} - {{goDet.arr_airport.province_name}}/{{goDet.arr_airport.city_name}}
       </h5>
     </ion-row>
@@ -34,7 +34,9 @@
           <ion-col col-2>
             <div class="header">FLIGHT</div>
             <div>{{item.flight_number}}</div>
-            <div><img src="{{item.img_src}}" alt="{{item.img_src}}"></div>
+            <div>
+              <img src="{{item.img_src}}" alt="{{item.img_src}}">
+            </div>
           </ion-col>
           <ion-col col-3>
             <div class="header">DATE</div>
@@ -56,6 +58,9 @@
           <ion-col col-2>
             <div class="header">FLIGHT</div>
             <div>{{item.flight_number}}</div>
+            <div>
+              <img src="{{item.img_src}}" alt="{{item.img_src}}">
+            </div>
           </ion-col>
           <ion-col col-3>
             <div class="header">DATE</div>
@@ -98,6 +103,9 @@
           <ion-col col-2>
             <div class="header">FLIGHT</div>
             <div>{{item.flight_number}}</div>
+            <div>
+              <img src="{{item.img_src}}" alt="{{item.img_src}}">
+            </div>
           </ion-col>
           <ion-col col-3>
             <div class="header">DATE</div>
@@ -119,6 +127,9 @@
           <ion-col col-2>
             <div class="header">FLIGHT</div>
             <div>{{item.flight_number}}</div>
+            <div>
+              <img src="{{item.img_src}}" alt="{{item.img_src}}">
+            </div>
           </ion-col>
           <ion-col col-3>
             <div class="header">DATE</div>

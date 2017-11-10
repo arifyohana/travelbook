@@ -1,5 +1,8 @@
 page-home {
-
+  ion-content>.scroll-content {
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
   .domestic {
     fill: #00a6e4;
   }

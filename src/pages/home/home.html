@@ -15,8 +15,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-img style="contain: none;" [src]="types[index].icon.banner"></ion-img>
+  <ion-row no-padding>
+    <ion-col no-padding>
+        <img [hidden]="!types[index].flight" src="assets/img/banner-flight.png">
+        <img [hidden]="types[index].flight" src="assets/img/banner-hotel.png">
+    </ion-col>
   </ion-row>
   <ion-grid padding-vertical>
     <ion-row align-items-center (swipe)="swipeEvent($event)">
@@ -24,7 +27,7 @@
         <div [inlineSVG]="'assets/svg/arrow.svg'" class="back-arrow" (click)="prev()"></div>
       </ion-col>
       <ion-col col-8>
-        <div class="circle" [inlineSVG]="types[index].icon.icon" [ngClass]="types[index].name"></div>
+        <div class="circle" [inlineSVG]="types[index].icon" [ngClass]="types[index].name"></div>
       </ion-col>
       <ion-col col-1>
         <div [inlineSVG]="'assets/svg/arrow.svg'" (click)="next()"></div>
