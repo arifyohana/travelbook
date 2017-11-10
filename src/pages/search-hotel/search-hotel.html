@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar [color]="color">
+    <ion-title align="center">{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid padding-top padding-left padding-right>
+    <ion-row>
+      Hotel/Destinasi:
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <div class="hotel-icon" [ngClass]="color" [inlineSVG]="'assets/svg/hotel.svg'"></div>
+      </ion-col>
+      <ion-col col-10>
+        <ion-input placeholder="Destinasi Tujuan, Nama Hotel" [ngClass]="color" [value]="toText" (click)="presentModal()" (ionFocus)="presentModal()"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row padding-top justify-content-center>
+      <ion-col col-6>
+        Check-in :
+      </ion-col>
+      <ion-col col-6>
+        Check-out :
+      </ion-col>
+    </ion-row>
+    <ion-row justify-content-center>
+      <ion-col col-6>
+        <div class="datepicker" [ngClass]="color">
+          <ion-icon name="calendar" [color]="color"></ion-icon>
+          <div class="day">{{query.startdate | date:'dd'}}</div>
+          <div class="month">
+            <div>{{query.startdate | date:'MMM'}}</div>
+            <div>{{query.startdate | date:'y'}}</div>
+          </div>
+        </div>
+        <ion-datetime [(ngModel)]="query.startdate" [min]="minDate()" [max]="maxDate()"></ion-datetime>
+      </ion-col>
+      <ion-col col-6>
+        <div class="datepicker" [ngClass]="color">
+          <ion-icon name="calendar" [color]="color"></ion-icon>
+          <div class="day">{{query.enddate | date:'dd'}}</div>
+          <div class="month">
+            <div>{{query.enddate | date:'MMM'}}</div>
+            <div>{{query.enddate | date:'y'}}</div>
+          </div>
+        </div>
+        <ion-datetime [(ngModel)]="query.enddate" [min]="minDate()" [max]="maxDate()"></ion-datetime>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-3>
+        <div class="label">Durasi&emsp;:</div>
+      </ion-col>
+      <ion-col col-9>
+        <ion-input type="number" class="durasi" [ngClass]="color" [value]="query.night"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-3>
+        <div class="label">Kamar&emsp;:</div>
+      </ion-col>
+      <ion-col col-9>
+        <ion-input type="number" class="kamar" [ngClass]="color" [value]="query.room"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row padding-top>
+      <ion-col col-4>
+        <div>Jumlah Tamu :</div>
+        <div class="penumpang" [ngClass]="color">
+          <ion-row align-items-center>
+            <ion-col col-4>
+              <button ion-button clear [disabled]="query.adult===0" (click)="query.adult = decrease(query.adult)">-</button>
+            </ion-col>
+            <ion-col col-4>
+              <div class="num" text-center>{{query.adult}}</div>
+            </ion-col>
+            <ion-col col-4>
+              <button ion-button clear [disabled]="query.adult===99" (click)="query.adult = increase(query.adult)">+</button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  <ion-row padding-top>
+    <ion-col>
+      <div>Filter Harga dan Bintang</div>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+  <ion-row>
+    <ion-col no-padding>
+      <button ion-button mode="ios" full [color]="color">No Preference</button>
+    </ion-col>
+  </ion-row>
+  <ion-row padding-top justify-content-center>
+    <ion-col col-6>
+      <button ion-button big block round mode="ios" [color]="color" (click)="search()">Cari Hotel</button>
+    </ion-col>
+  </ion-row>
+</ion-content>

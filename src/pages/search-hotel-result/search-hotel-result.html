@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="hotel">
+    <ion-title align="center">{{data.search_queries.q}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar padding-horizontal [animated]="true" #input></ion-searchbar>
+  <ion-row margin-horizontal align-items-center class="button-bar">
+    <ion-col col-6>
+      <button ion-button small clear full>
+        Filter&nbsp;
+        <ion-icon name="ios-arrow-down"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col col-6 style="border-left: solid 1px #fcb100;">
+      <button ion-button small clear full>
+        Sort&nbsp;
+        <ion-icon name="ios-arrow-down"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-scroll scrollY="true">
+    <ion-list>
+      <ion-item *ngFor="let item of data.results.result" >
+        <div class="round-point" item-start></div>
+        <ion-thumbnail item-start>
+          <img [src]="item.photo_primary">
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <div><ion-icon name="star" *ngFor="let star of createStars(item.star_rating)" [color]="star"></ion-icon></div>
+        <p>{{item.kecamatan_name}}, {{item.province_name}}</p>
+        <p *ngIf="item.tripadvisor_avg_rating"><img [src]="item.tripadvisor_avg_rating.image_url" alt="rating" style="height:14px;"> ( Dari {{item.tripadvisor_avg_rating.review_count}} traveler )</p>
+        <div item-end>
+            <p>Harga mulai dari :</p>
+            <h2 class="price">{{item.price | currency:data.diagnostic.currency}}</h2>
+            <h2 *ngIf="item.rating" class="rate">{{item.rating}}/10</h2>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-scroll>
+</ion-content>

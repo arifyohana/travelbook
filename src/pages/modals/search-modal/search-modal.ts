@@ -9,21 +9,30 @@ import { ApiService } from "../../../providers/api-service/api-service";
 })
 export class SearchModalPage {
   @ViewChild('input') input: Searchbar;
-  title: string = "";
+  title: string = '';
+  placeholder:string= '';
   type: string;
+  token: string;
   items: IAirportCode[];
   constructor(public viewCtrl: ViewController, public navParams: NavParams, private api: ApiService) {
     this.type = this.navParams.get('type');
+    this.token = this.navParams.get('token');
     this.init();
   }
 
   init() {
     switch (this.type) {
-      case "flightfrom":
-        this.title = "Keberangkatan"
+      case 'flightfrom':
+        this.title = 'Keberangkatan'
+        this.placeholder = 'Pilih Kota / Bandara'
         break;
-      case "flightto":
-        this.title = "Kedatangan"
+      case 'flightto':
+        this.title = 'Kedatangan'
+        this.placeholder = 'Pilih Kota / Bandara'
+        break;
+      case 'hotel':
+        this.title = 'Hotel/Destinasi'
+        this.placeholder = 'Destinasi Tujuan, Nama Hotel'
         break;
 
       default:
@@ -53,8 +62,14 @@ export class SearchModalPage {
       this.items = [];
       return;
     }
-    this.api.getAirports(val)
-      .then(data => this.items = data)
-      .catch(err => console.log(err));
+    if (this.type === 'hotel') {
+      this.api.getHotels(val, this.token)
+        .then(data => this.items = data)
+        .catch(err => console.log(err));
+    } else {
+      this.api.getAirports(val)
+        .then(data => this.items = data)
+        .catch(err => console.log(err));
+    }
   }
 }

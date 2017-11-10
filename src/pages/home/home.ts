@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 
 import { SearchPage } from '../search/search';
+import { SearchHotelPage } from "../search-hotel/search-hotel";
 
 @Component({
   selector: 'page-home',
@@ -25,7 +26,11 @@ export class HomePage {
   }
 
   search() {
-    this.app.getRootNavs()[0].push(SearchPage, this.types[this.index]);
+    if (!this.types[this.index].flight) {
+      this.app.getRootNavs()[0].push(SearchHotelPage, this.types[this.index]);
+    } else {
+      this.app.getRootNavs()[0].push(SearchPage, this.types[this.index]);
+    }
   }
 
   next() {

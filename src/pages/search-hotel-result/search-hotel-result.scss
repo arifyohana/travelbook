@@ -1,0 +1,94 @@
+page-search-hotel-result {
+  .domestic {
+    color: color($colors, domestic, base);
+    fill: color($colors, domestic, base);
+  }
+  .international {
+    color: color($colors, international, base);
+    fill: color($colors, international, base);
+  }
+  .hotel {
+    color: color($colors, hotel, base);
+    fill: color($colors, hotel, base);
+  }
+  .price {
+    color: #f7931e;
+  }
+  .rate {
+    color: #ed1e79;
+  }
+  .subtitle {
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .date {
+    padding-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 1.3rem;
+  }
+  .airport-text {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .plane-icon {
+    height: 1.5rem;
+    justify-content: center;
+    display: flex;
+    border-bottom: 1px dashed;
+    margin-bottom: 1.5rem;
+    &.return {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    svg {
+      height: 2.8rem;
+    }
+  }
+  ion-scroll {
+    position: absolute;
+    top: 140px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    display: block;
+  }
+  ion-row {
+    &.button-bar {
+      border: 1px solid #fcb100;
+      border-radius: 1rem;
+      margin: 1rem;
+    }
+  }
+  ion-label {
+    overflow: visible;
+    text-overflow: normal;
+    white-space: normal;
+  }
+  ion-item.item.item-block {
+    padding-left: 8px;
+  }
+  .round-point {
+    background: #2968f5;
+    height: 15px;
+    width: 15px;
+    border-radius: 8px;
+    margin-right: 8px;
+  }
+  button {
+    &.button-small {
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-transform: capitalize;
+      margin: 0px;
+      color: #000;
+    }
+  }
+  div.searchbar-input-container>input.searchbar-input {
+    border: solid 1px #fcb100;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+}

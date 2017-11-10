@@ -96,7 +96,7 @@ export class ApiService {
     });
   }
 
-//#region "Penerbangan"
+  //#region "Penerbangan"
   /**
    * Cari penerbangan
    * @param {IForm.ISearchFlightFormData} data
@@ -189,14 +189,14 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http.post(this.API_URL + "v1/delete_flight_order", data, { headers: this.headers })
         .subscribe(
-          response => {
-            let results: IResponse.IDeleteFlightOrderResult = response.json();
-            if (results.diagnostic.status != 200) {
-              reject(new Error(results.diagnostic.error_msgs));
-            }
-            resolve(results);
-          },
-          err => reject(err)
+        response => {
+          let results: IResponse.IDeleteFlightOrderResult = response.json();
+          if (results.diagnostic.status != 200) {
+            reject(new Error(results.diagnostic.error_msgs));
+          }
+          resolve(results);
+        },
+        err => reject(err)
         );
     });
   }
@@ -205,20 +205,20 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       this.http.post(this.API_URL + "v1/payment_flight_order", data, { headers: this.headers })
         .subscribe(
-          response => {
-            let results: IResponse.IPaymentFlightOrderResult = response.json();
-            if (results.diagnostic.status != 200) {
-              reject(new Error(results.diagnostic.error_msgs));
-            }
-            resolve(results);
-          },
-          err => reject(err)
+        response => {
+          let results: IResponse.IPaymentFlightOrderResult = response.json();
+          if (results.diagnostic.status != 200) {
+            reject(new Error(results.diagnostic.error_msgs));
+          }
+          resolve(results);
+        },
+        err => reject(err)
         );
     });
   }
-//#endregion
+  //#endregion
 
-//#region "Hotel"
+  //#region "Hotel"
   getHotels(name: string, token: string): Promise<IAirportCode[]> {
     return new Promise((resolve, reject) => {
       this.http.get(this.API_URL + "v1/hotel_query.json", { params: { q: name, token: token } })
@@ -234,7 +234,7 @@ export class ApiService {
 
   searchHotel(data: IRequest.ISearchHotelQuery): Promise<IResponse.IHotelSearchResults> {
     return new Promise((resolve, reject) => {
-      this.http.get(this.API_URL + "v1/search_hotel", { params: data })
+      this.http.post(this.API_URL + "v1/search_hotel", data, { headers: this.headers })
         .subscribe(
         response => {
           let results: IResponse.IHotelSearchResults = response.json();
@@ -247,5 +247,5 @@ export class ApiService {
         err => reject(err));
     });
   }
-//#endregion
+  //#endregion
 }

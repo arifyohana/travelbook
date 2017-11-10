@@ -9,7 +9,7 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar [animated]="true" #input placeholder="Pilih Kota / Bandara" (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar [animated]="true" #input [placeholder]="placeholder" (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 <ion-content>
   <ion-list>

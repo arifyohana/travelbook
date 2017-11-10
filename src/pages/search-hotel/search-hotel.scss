@@ -1,0 +1,129 @@
+page-search-hotel {
+    ion-input{
+        border-bottom: 0.1rem solid;
+    }
+    .hotel-icon {
+        height: 4rem;
+        width: 4rem;
+    }
+    .datepicker {
+        border: 0.1rem solid;
+        height: 6rem;
+        width: 100%;
+        border-radius: 1rem;
+        font-weight: 500;
+        display: flex;
+        ion-icon {
+        font-size: 4rem;
+        padding: 1rem 0.5rem;
+        }
+        .day {
+        align-self: center;
+        font-size: 3rem;
+        padding: 0.2rem;
+        }
+        .month {
+        align-self: center;
+        font-size: 1.5rem;
+        padding: 0.2rem;
+        }
+        &.disabled{
+        border-color: #a8acab;
+        color: #a8acab;
+        fill: #a8acab;
+        }
+    }
+    ion-datetime{
+        height: 0 !important;
+        width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .label{
+        padding: 13px 0px 14px 0px;
+    }
+    ion-input{
+        &.durasi{
+            input{
+                width: calc(100% - 50px - 50px);
+            }
+        }
+        &.kamar{
+            input{
+                width: calc(100% - 50px - 50px);
+            }
+        }
+        &.durasi:after{
+            content: "Malam";
+        }
+        &.kamar:after{
+            content: "Kamar";
+        }
+    }
+    .penumpang {
+        border: 0.1rem solid;
+        width: 100%;
+        border-radius: 1rem;
+        font-weight: 500;
+        display: flex;
+        font-size: 1.8rem;
+    
+        ion-row {
+        width: 100%;
+        }
+        ion-col {
+        padding: 0;
+        display: flex;
+    
+        .num {
+            width: 100%;
+        }
+        }
+        button {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 2.5rem;
+        color: #222222
+        }
+    }
+    $domestic: color($colors,domestic,base);
+    $international: color($colors,international,base);
+    $hotel: color($colors,hotel,base);
+    button {
+        &.kelas {
+        border-bottom: 0.5rem solid;
+        &.button-md-domestic {
+            background-color: desaturate( $domestic, 20% );
+            border-bottom-color: desaturate( $domestic, 20% );
+            &.active {
+            background-color: $domestic;
+            border-bottom-color: #ffffff;
+            }
+        }
+        &.button-md-international {
+            background-color: desaturate( $international, 20% );
+            border-bottom-color: desaturate( $international, 20% );
+            &.active {
+            background-color: $international;
+            border-bottom-color: #ffffff;
+            }
+        }
+        }
+    }
+    .domestic {
+        border-color: $domestic;
+        fill: $domestic;
+    }
+    
+    .international {
+        border-color: $international;
+        fill: $international;
+    }
+    
+    .hotel {
+        border-color: $hotel;
+        fill: $hotel;
+    }
+}

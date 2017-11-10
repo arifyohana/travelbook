@@ -2,8 +2,8 @@ export interface ISearchHotelQuery {
   to: string;
   startdate: string;
   enddate: string;
-  room: string;
+  room: number;
   night: number;
-  adult: string;
+  adult: number;
   token: string;
 }
